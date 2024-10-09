@@ -1,15 +1,12 @@
 name: Backend Continuous Integration
 
 on:
-  push:
+  pull_request:
     branches:
-      - hoapv127
-  # pull_request:
-  #   branches:
-  #     - main
-  #   types: [opened]
-  #   paths:
-  #     - '**.js'
+      - main
+    types: [opened]
+    paths:
+      - '**.js'
 
 jobs:
   lint:
@@ -90,4 +87,4 @@ jobs:
 
       - name: Build Application with Docker
         run: |
-          docker build -t my-app .
+          docker build --tag=backend:latest .

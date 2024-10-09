@@ -102,4 +102,4 @@ jobs:
 
       - name: Build Application with Docker
         run: |
-          docker build -t my-app .
+          docker build --tag=frontend:latest .
