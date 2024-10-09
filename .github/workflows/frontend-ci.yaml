@@ -1,13 +1,8 @@
 name: Frontend CI
 
-# on:
-#   pull_request:
-#     types: [opened]
-
 on:
-  push:
-    branches:
-      - hoapv127
+  pull_request:
+    types: [opened]
 
 jobs:
   lint:
