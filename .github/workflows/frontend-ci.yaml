@@ -13,6 +13,11 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     name: Lint Job
+
+    defaults:
+      run:
+        working-directory: starter/frontend
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -31,7 +36,6 @@ jobs:
             ${{ runner.os }}-node-modules-
 
       - name: Install Dependencies
-        working-directory: starter/frontend
         run: npm install
 
       - name: Run Lint
@@ -40,6 +44,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     name: Test Job
+
+    defaults:
+      run:
+        working-directory: starter/frontend
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -58,7 +67,6 @@ jobs:
             ${{ runner.os }}-node-modules-
 
       - name: Install Dependencies
-        working-directory: starter/frontend
         run: npm install
 
       - name: Run Tests
@@ -68,6 +76,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Build Job
     needs: [lint, test]
+
+    defaults:
+      run:
+        working-directory: starter/frontend
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -86,7 +99,6 @@ jobs:
             ${{ runner.os }}-node-modules-
 
       - name: Install Dependencies
-        working-directory: starter/frontend
         run: npm install
 
       - name: Build Application with Docker
