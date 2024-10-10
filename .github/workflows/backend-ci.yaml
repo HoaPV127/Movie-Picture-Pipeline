@@ -5,8 +5,8 @@ on:
     branches:
       - main
     types: [opened]
-    paths:
-      - '**.js'
+    # paths:
+    #   - '**.js'
 
 jobs:
   lint:
