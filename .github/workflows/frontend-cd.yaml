@@ -1,12 +1,9 @@
 name: Frontend Continuous Deployment
 
 on:
-  pull_request:
+  push:
     branches:
       - main
-    types: [opened]
-    # paths:
-    #   - '**.js'
 
 jobs:
   lint:
@@ -102,7 +99,7 @@ jobs:
 
       - name: Build Application with Docker
         env:
-          REACT_APP_MOVIE_API_URL: http://localhost:5000
+          REACT_APP_MOVIE_API_URL: a61ffc87313ff49538997036b3c700b8-698460257.us-east-1.elb.amazonaws.com:5000
         run: |
           docker build --tag=frontend:latest .
       
