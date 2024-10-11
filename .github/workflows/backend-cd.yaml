@@ -1,12 +1,11 @@
 name: Backend Continuous Deployment
 
 on:
-  pull_request:
+  push:
     branches:
       - main
-    types: [opened]
-    # paths:
-    #   - '**.js'
+
+  workflow_dispatch:
 
 jobs:
   lint:
