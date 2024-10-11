@@ -101,9 +101,9 @@ jobs:
 
       - name: Build Application with Docker
         env:
-          REACT_APP_MOVIE_API_URL: a61ffc87313ff49538997036b3c700b8-698460257.us-east-1.elb.amazonaws.com:5000
+          REACT_APP_MOVIE_API_URL: http://a61ffc87313ff49538997036b3c700b8-698460257.us-east-1.elb.amazonaws.com
         run: |
-          docker build --tag=frontend:latest .
+          docker build --build-arg REACT_APP_MOVIE_API_URL=${{ env.REACT_APP_MOVIE_API_URL }} --tag=frontend:latest .
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -134,3 +134,4 @@ jobs:
       - name: Deploy to EKS
         run: |
           kubectl set image deployment/frontend frontend=346526321261.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/frontend:latest
+          kubectl rollout restart deployment/frontend
