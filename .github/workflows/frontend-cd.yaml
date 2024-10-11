@@ -101,7 +101,7 @@ jobs:
 
       - name: Build Application with Docker
         env:
-          REACT_APP_MOVIE_API_URL: a61ffc87313ff49538997036b3c700b8-698460257.us-east-1.elb.amazonaws.com:80
+          REACT_APP_MOVIE_API_URL: http://a61ffc87313ff49538997036b3c700b8-698460257.us-east-1.elb.amazonaws.com
         run: |
           docker build --build-arg REACT_APP_MOVIE_API_URL=${{ env.REACT_APP_MOVIE_API_URL }} --tag=frontend:latest .
       
